@@ -96,7 +96,7 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
 Security Group allows you to whitelist Inbound and Outbound Trafiic to Amazon SageMaker Jupyter Notebook Instances and Training jobs 
 
 ### Installation Steps
-1. Click the below Launch Stack Icon to Intsall  VPC and Subnet in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-securitygroups&templateURL= "https://awsvik-sagemaker-security.s3.amazonaws.com/vpc-sagemaker-sgs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
+1. Click the below Launch Stack Icon to VPC Security Groups in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-securitygroups&templateURL= "https://awsvik-sagemaker-security.s3.amazonaws.com/vpc-sagemaker-sgs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard.
 3. Specify a name and all parameters for the stack.
 4. Click Next to proceed with the next step of the wizard.
