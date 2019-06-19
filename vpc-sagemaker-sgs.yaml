@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'VPC: Security Group for Notebook and Training Instance'
+Metadata:
+  'AWS::CloudFormation::Interface':
+    ParameterGroups:
+      - Label:
+          default: Parent Stacks
+        Parameters:
+          - ParentVPCStack
+Parameters:
+  ParentVPCStack:
+    Description: Stack name of parent VPC stack.
+    Type: String
+Resources:
+  PipSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Security Group to download libraries from pypi
+      VpcId:
+       'Fn::ImportValue': !Sub '${ParentVPCStack}-VPC'
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+  TrainingSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      VpcId:
+       'Fn::ImportValue': !Sub '${ParentVPCStack}-VPC'
+      GroupDescription: SageMaker training security group
+  OutboundRule1:
+    Type: 'AWS::EC2::SecurityGroupEgress'
+    Properties:
+      IpProtocol: udp
+      FromPort: 500
+      ToPort: 500
+      DestinationSecurityGroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+      GroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+  OutboundRule2:
+    Type: 'AWS::EC2::SecurityGroupEgress'
+    Properties:
+      IpProtocol: 50
+      DestinationSecurityGroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+      GroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+  InboundRule1:
+    Type: 'AWS::EC2::SecurityGroupIngress'
+    Properties:
+      IpProtocol: udp
+      FromPort: 500
+      ToPort: 500
+      SourceSecurityGroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+      GroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+  InboundRule2:
+    Type: 'AWS::EC2::SecurityGroupIngress'
+    Properties:
+      IpProtocol: 50
+      SourceSecurityGroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+      GroupId: !GetAtt 
+        - TrainingSecurityGroup
+        - GroupId
+Outputs:
+  TemplateID:
+    Description: 'cloudonaut.io template id'
+    Value: 'vpc/vpc-sagemaker-sgs'
+  PipSecurityGroup:
+    Description: Security group for pip install in Jupyter Notebook
+    Value: !Ref PipSecurityGroup
+  TrainingSecurityGroup:
+    Description: SageMaker training security group
+    Value: !Ref TrainingSecurityGroup
