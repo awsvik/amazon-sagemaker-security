@@ -96,7 +96,7 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
 Security Group allows you to whitelist Inbound and Outbound Trafiic to Amazon SageMaker Jupyter Notebook Instances and Training jobs 
 
 ### Installation Steps
-1. Click the below Launch Stack Icon to VPC Security Groups in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-securitygroups&templateURL= "https://awsvik-sagemaker-security.s3.amazonaws.com/vpc-sagemaker-sgs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
+1. Click the below Launch Stack Icon to VPC Security Groups in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-securitygroups&templateURL=https://awsvik-sagemaker-security.s3.amazonaws.com/vpc-sagemaker-sgs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard.
 3. Specify a name and all parameters for the stack.
 4. Click Next to proceed with the next step of the wizard.
@@ -138,7 +138,7 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
  ![CloudWatch Dashboard](./images/cloudwatch-dashboard.png)
   
 4. Amazon SageMaker uses Amazon S3 to download training data for model training. Let's try to download the sample data for movielens from Amazon S3 into SageMaker Jupyter Instance. Run **aws s3 cp s3://awsvik-sagemaker-security/ml-latest-small.zip** to download movielens data from Amazon S3 bucket.
-5. The picture below explains the traffic flow from SageMaker Notebook to Amazon S3 vis AWS Backbone![Pip Install Flow](./images/s3endpoint.png)
+5. The picture below explains the traffic flow from SageMaker Notebook to Amazon S3 vis AWS Backbone![yum Install Flow](./images/s3endpoint.png)
 6. The **aws s3 cp** command originates from Amazon SageMaker Notebook Instance terminal window. The command traverse through to Notebook Instance ENI attached to a VPC/Private Subnet. The subnet has a route rule to redirect it to AWS Backbone to reach out to Amazon S3 as a target. The VPC Endpoint to Amazon S3 traverse over the AWS Backbone and doesn't go over the internet. 
 7. For learning objective 8.9,10. We won't be able to cover it in a compressed 1 hr schedule. But, we can use same constructs that we created for SageMaker Jupyter Notebook and pass it on as a parameter in the fit function call.
 8. For Learning Objectives 8,9,10. You can use the same VPC, Subnet, S3 Endpoint networking and security construct that you created to lauch a training job. You just need to pass a **VPCConfig** parameter in the CreateTrainingJob or CreateParameterTuningJob API call.
