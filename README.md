@@ -1,12 +1,12 @@
 # Introduction
 
-In this workshop, we discuss some of the the capabilities and controls provided by Amazon SageMaker, AWS fully managed platform for machine leanring, to secure and monitor pre-built Jupyter Notebook instances and Training jobs instances. This list is very exhaustive and what we will discuss today is subset of controls that are made avaliable by Amazon SageMaker service.
+In this workshop, we discuss some of the the capabilities and controls provided by Amazon SageMaker, AWS fully managed platform for machine leanring, to secure and monitor pre-built Jupyter Notebook instances and Training jobs instances. This list is very exhaustive and what we will discuss today is subset of controls that are made avaliable by Amazon SageMaker.
 
 Amazon SageMaker is a machine leanring platform for Developers and Data Scientists. Amazon SageMaker takes undifferentiated heavy lifting involved in Machine Learning process and allows developers and data scientists to focus on solving business problem by following a build, train and deploy pattern.
 
-Amazon SageMaker simplifies the management of ML infrastructure and gives data scienttis and developers an almost serverless experience. However, for CloudOps and SecurityOps teams in an organization can centrally configure, control and monitor trafic ingress and egress to build and train instances. 
+Amazon SageMaker simplifies the management of ML infrastructure and gives data scientist and developers an almost serverless experience. However, CloudOps and SecurityOps teams in an organization can centrally configure, control and monitor trafic ingress and egress to build and train instances of Amazon SageMaker. 
 
-Amazon SageMaker encrypts most of the connection by default. But, there are specific parts of machine learning within Amazon SageMaker platform where encryption of channel and encryption of attached EBS volume is left to the discrestion of an organzation to make a tradeoff between performance and security. 
+Amazon SageMaker encrypts most of the connection by default. But, there are specific parts of machine learning within Amazon SageMaker platform where encryption of channel and encryption of attached EBS volume is left to the discretion of an organzation to make a tradeoff between performance and security. 
 
 
 
