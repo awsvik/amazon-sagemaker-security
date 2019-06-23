@@ -119,7 +119,7 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
 10. Configure network, select VPC, Subnet, Security Group. The VPCID should be the one that was created in Lab 1(10.(the class B Number you enetered in Lab 1).0.0. The Subnet can be anyone in the dropdown that says "A private" and the security group should be one with the "pipsecuritygroup"
 ![network](./images/network.png)
 11. Scroll down to the bottom of the page and click 'Create Notebook Instance' in the bottom right.
-12. Wait for the status of your Notebook Instance to become 'In service'. Once the status is 'In service', click 'Open Jupyter' under the action menu of your Notebook Instance. This will open up the Jupyter Notebook in your browser. Jupyter Notebook is the IDE that data scientists uses to script machine leanring jobs.
+12. Wait for the status of your Notebook Instance to become 'In service'. Once the status is 'In service', click 'Open Jupyter' next to the 'In Service' status under 'Action' field. This will open up the Jupyter Notebook in your browser. Jupyter Notebook is the IDE that data scientists uses to script machine leanring jobs.
 13. In the Jupyter Notebook, Click 'New' on the right-hand side.
 ![jupyter console](./images/jupyter-console.png)
 14. In the dropdown menu under 'New', scroll to the bottom and click 'Terminal'. This will open up terminal window in yur browser and you can use it to run cli commands on your Notebook instance.
