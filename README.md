@@ -70,10 +70,9 @@ Use VPC endpoint to securely route traffic within a VPC for private instances(Am
 3. Specify a name and all parameters for the stack. For ParentVPCStack, input 'vpc-fnd316'
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
-6. Check the "I acknowledge that this template might cause AWS CloudFormation to create IAM resources".Checkbox it.
-7. Click Create to start the creation of the stack.
+6. Click Create to start the creation of the stack.
 Wait until the stack reaches the state CREATE_COMPLETE
-8. Following setup will be created in your AWS Account 
+7. Following setup will be created in your AWS Account 
 
 ![VPC with Endpoint](https://templates.cloudonaut.io/en/v3.3.0/img/vpc-endpoint-s3.png)
 
@@ -83,7 +82,7 @@ Flow Logs contain aggregated network traffic data in your VPC.
 ### Installation Steps
 1. Click the below Launch Stack Icon to install  VPC and Subnet in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-flowlogs&templateURL=https://s3-eu-west-1.amazonaws.com/widdix-aws-cf-templates-releases-eu-west-1/v3.3.0/vpc/vpc-flow-logs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard. For ParentVPCStack, input 'vpc-fnd316'
-3. Specify a name and all parameters for the stack.
+3. Specify a name and all parameters for the stack. ParentVPCStack="vpc-fnd316", retentiondays =1, TrafficType=ALL
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
 6. Check the "I acknowledge that this template might cause AWS CloudFormation to create IAM resources". Checkbox it.
