@@ -122,7 +122,7 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
 12. Wait for the status of your Notebook Instance to become 'In service'. Once the status is 'In service', click 'Open Jupyter' next to the 'In Service' status under 'Action' field. This will open up the Jupyter Notebook in your browser. Jupyter Notebook is the IDE that data scientists uses to script machine leanring jobs.
 13. In the Jupyter Notebook, Click 'New' on the right-hand side.
 ![jupyter console](./images/jupyter-console.png)
-14. In the dropdown menu under 'New', scroll to the bottom and click 'Terminal'. This will open up terminal window in yur browser and you can use it to run cli commands on your Notebook instance.
+14. In the dropdown menu under 'New', scroll to the bottom and click 'Terminal'. This will open up terminal window in your browser and you can use it to run cli commands on your Notebook instance.
 
 ## **Lab 7 - Let's fire some commands, understand and validate the traffic flow**
 1. Developing in Python requires another software package, called Development Tools. Let's install this package by entering **sudo yum groupinstall “Development Tools”**.
