@@ -52,7 +52,7 @@ If you want to access the Internet from a private subnet, you have to create a N
 ### Installation Steps
 1. Click the below Launch Stack Icon to install  VPC and Subnet in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-nat-gateway&templateURL=https://s3-eu-west-1.amazonaws.com/widdix-aws-cf-templates-releases-eu-west-1/v3.3.0/vpc/vpc-nat-gateway.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard.
-3. Specify a name and all parameters for the stack.
+3. Specify a name and all parameters for the stack. For ParentVPCStack, input 'vpc-fnd316'
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
 6. Click Create to start the creation of the stack.
@@ -67,7 +67,7 @@ Use VPC endpoint to securely route traffic within a VPC for private instances(Am
 ### Installation Steps
 1. Click the below Launch Stack Icon to install  VPC and Subnet in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-s3endpoint&templateURL=https://s3-eu-west-1.amazonaws.com/widdix-aws-cf-templates-releases-eu-west-1/v3.3.0/vpc/vpc-endpoint-s3.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard.
-3. Specify a name and all parameters for the stack.
+3. Specify a name and all parameters for the stack. For ParentVPCStack, input 'vpc-fnd316'
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
 6. Check the "I acknowledge that this template might cause AWS CloudFormation to create IAM resources".Checkbox it.
@@ -82,7 +82,7 @@ Flow Logs contain aggregated network traffic data in your VPC.
 
 ### Installation Steps
 1. Click the below Launch Stack Icon to install  VPC and Subnet in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-flowlogs&templateURL=https://s3-eu-west-1.amazonaws.com/widdix-aws-cf-templates-releases-eu-west-1/v3.3.0/vpc/vpc-flow-logs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
-2. Click Next to proceed with the next step of the wizard.
+2. Click Next to proceed with the next step of the wizard. For ParentVPCStack, input 'vpc-fnd316'
 3. Specify a name and all parameters for the stack.
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
@@ -98,7 +98,7 @@ Security Group allows you to whitelist Inbound and Outbound Trafiic to Amazon Sa
 ### Installation Steps
 1. Click the below Launch Stack Icon to install VPC Security Groups in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316-securitygroups&templateURL=https://awsvik-sagemaker-security.s3.amazonaws.com/vpc-sagemaker-sgs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard.
-3. Specify a name and all parameters for the stack.
+3. Specify a name and all parameters for the stack. For ParentVPCStack, input 'vpc-fnd316'
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
 6. Check the "I acknowledge that this template might cause AWS CloudFormation to create IAM resources". Checkbox it.
@@ -117,7 +117,7 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
 7. Select and click 'Create a new role'![Permissions](./images/permission.png)
 8. Select 'Any S3 buckets' for permissions and click 'Create role'![create new role](./images/create-role.png)
 9. We will leave the entry for encryption default. In case you are interested in learning more about how to set up and manage encryption centrally at scale on Amazon SageMaker EBS volume. Click <a target="_blank" href="https://aws.amazon.com/blogs/mt/enable-self-service-secured-data-science-using-amazon-sagemaker-notebooks-and-aws-service-catalog/"><span><img height="18px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ36QwXhCXYMl0RtFfP4TLJuPNmP-dWLMktz--hIu1Iq7HWY7HH"/></span></a> to refer a detailed blog on this subject.
-10. Configure network, select VPC, Subnet, Security Group. The VPCID should be the one that was created in Lab 1. The Subnet can be anyone in the dropdown that says "A private" and the security group should be one with the "pipsecuritygroup"
+10. Configure network, select VPC, Subnet, Security Group. The VPCID should be the one that was created in Lab 1(10.(the class B Number you enetered in Lab 1).0.0. The Subnet can be anyone in the dropdown that says "A private" and the security group should be one with the "pipsecuritygroup"
 ![network](./images/network.png)
 11. Scroll down to the bottom of the page and click 'Create Notebook Instance' in the bottom right.
 12. Wait for the status of your Notebook Instance to become 'In service'. Once the status is 'In service', click 'Open Jupyter' under the action menu of your Notebook Instance. This will open up the Jupyter Notebook in your browser. Jupyter Notebook is the IDE that data scientists uses to script machine leanring jobs.
