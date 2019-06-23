@@ -125,10 +125,15 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
 14. In the dropdown menu under 'New', scroll to the bottom and click 'Terminal'. This will open up terminal window in your browser and you can use it to run cli commands on your Notebook instance.
 
 ## **Lab 7 - Let's fire some commands, understand and validate the traffic flow**
-1. Developing in Python requires another software package, called Development Tools. Let's install this package by entering **sudo yum groupinstall “Development Tools”**.
-2. The picture below explains the traffic flow from SageMaker Notebook to Intenet detailing how "Development Tools" packages are downloaded 
+1. Developing in Python requires another software package, called Development Tools. Let's install this package by entering **sudo yum groupinstall “Development Tools”**. The command uses http://packages.xxxxx.amazonaws.com/ as a mirror. The security group attached to your 'vpc-fnd316' will only allow **https** outbound trafffic. The http traffic will be blocked and you will observe that connection will timeout. Go ahead and terminate this command using 'Control-Z'.
+2. Let's try another command. Type "pip install pip-test'. pip is a package manager for python libraries. pip uses **https** connection to download packages. This command should go through successfully without timeout. 
+3. The picture below explains the traffic flow from SageMaker Notebook to Intenet detailing how "Development Tools" packages are downloaded 
 ![Pip Install Flow](./images/yum-install-flow.png)
-3. You can monitor your traffic from CloudWatch. For command that we just fired. You will see an entry with 443 port.
+4. You can monitor your traffic from CloudWatch. For command that we just fired. You will see an entry with port 443 and port 80. To navigate to CloudWatch console, open a new tab, login to AWS Console, make sure you are in the region in which you are working, click 'Services' on the top left. In the 'Search Services by name", type 'CloudWatch' click on the 'CloudWatch' Service and this will navigate you to CloudWatch 'console.
+5. In the CloudWatch console, in the left-hand side menu. Click 'Insights'. In the Search bar on the top, 'select log group', search by name 'vpc-fnd316' You should see an entry pop up. In the filter expression, use following query
+**filter action="REJECT"
+| limit 20**
+You should see traffic rejected on Port 80.
 
 **VPCLogs Fields:** [version, accountid, interfaceid, srcaddr, dstaddr, srcport, dstport, protocol, packets, bytes, start, end, action, logstatus]
 
@@ -136,12 +141,12 @@ Flow Logs will show up in CloudWatch Logs a few minutes after activation.
  
  ![CloudWatch Dashboard](./images/cloudwatch-dashboard.png)
   
-4. Amazon SageMaker uses Amazon S3 to download training data for model training. Let's try to download the sample data for movielens from Amazon S3 into SageMaker Jupyter Instance. Run **aws s3 cp s3://awsvik-sagemaker-security/ml-latest-small.zip** to download movielens data from Amazon S3 bucket.
-5. The picture below explains the traffic flow from SageMaker Notebook to Amazon S3 vis AWS Backbone![yum Install Flow](./images/s3endpoint.png)
-6. The **aws s3 cp** command originates from Amazon SageMaker Notebook Instance terminal window. The command traverses through to the Amazon SageMaker Notebook Instance ENI attached to a private subnet of a VPC. The subnet has a routing to redirect command over the AWS Backbone to access Amazon S3 as a target. The VPC Endpoint to Amazon S3 connection uses AWS Backbone and doesn't go over the Internet. 
-7. We won't be able to cover learning objectives 8.9,10 in a compressed 1 hr schedule. But, we can use the same networking construct that we created above for Amazon SageMaker Jupyter Notebook Instance and pass it as a parameter in the fit API/Training API/Hyperparameter tuning API call. Simply pass a **VPCConfig** as a parameter in the API call.
+5. Amazon SageMaker uses Amazon S3 to download training data for model training. Let's try to download the sample data for movielens from Amazon S3 into SageMaker Jupyter Instance. Run **aws s3 cp s3://awsvik-sagemaker-security/ml-latest-small.zip** to download movielens data from Amazon S3 bucket.
+6. The picture below explains the traffic flow from SageMaker Notebook to Amazon S3 vis AWS Backbone![yum Install Flow](./images/s3endpoint.png)
+7. The **aws s3 cp** command originates from Amazon SageMaker Notebook Instance terminal window. The command traverses through to the Amazon SageMaker Notebook Instance ENI attached to a private subnet of a VPC. The subnet has a routing to redirect command over the AWS Backbone to access Amazon S3 as a target. The VPC Endpoint to Amazon S3 connection uses AWS Backbone and doesn't go over the Internet. 
+8. We won't be able to cover learning objectives 8.9,10 in a compressed 1 hr schedule. But, we can use the same networking construct that we created above for Amazon SageMaker Jupyter Notebook Instance and pass it as a parameter in the fit API/Training API/Hyperparameter tuning API call. Simply pass a **VPCConfig** as a parameter in the API call.
 ![sagemaker training](./images/training-configuration.png)
-8. In addition, to make the training more secure you can optionally encrypt the traffic between Amazon SageMaker Instances used for training. All you have to do is create a training SecurityGroup with Inbound and Outbound rules as described in the picture above and set the **EnableInterContainerTrafficEncryption** parameter to **True** in the training API call. The VPCFlowLogs will send the traffic data to AWS CloudWatch and you can use that for monitoring ingress/egress traffic just like you did for Amazon SageMaker Notebook Instances. The below picture explains the setup for training on multiple instances with inter container encryption turned ON.
+9. In addition, to make the training more secure you can optionally encrypt the traffic between Amazon SageMaker Instances used for training. All you have to do is create a training SecurityGroup with Inbound and Outbound rules as described in the picture above and set the **EnableInterContainerTrafficEncryption** parameter to **True** in the training API call. The VPCFlowLogs will send the traffic data to AWS CloudWatch and you can use that for monitoring ingress/egress traffic just like you did for Amazon SageMaker Notebook Instances. The below picture explains the setup for training on multiple instances with inter container encryption turned ON.
 ![sagemaker training with encryption](./images/training-with-encryption.png)
 
 ## Finish the Lab
