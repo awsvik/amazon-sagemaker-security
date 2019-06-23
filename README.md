@@ -35,7 +35,7 @@ A VPC is a virtual network inside AWS where you can isolate your setup using pri
 ### Installation Steps
 1. Click the below Launch Stack Icon to install  VPC and Subnet in your AWS Account  <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=vpc-fnd316&templateURL=https://s3-eu-west-1.amazonaws.com/widdix-aws-cf-templates-releases-eu-west-1/v3.3.0/vpc/vpc-2azs.yaml"><span><img height="18px" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"/></span></a>
 2. Click Next to proceed with the next step of the wizard.
-3. Specify a name and all parameters for the stack.
+3. Specify a name and all parameters for the stack. For ClassB input any number between 0-255.
 4. Click Next to proceed with the next step of the wizard.
 5. Click Next to skip the Options step of the wizard.
 6. Click Create to start the creation of the stack.
