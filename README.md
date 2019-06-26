@@ -14,13 +14,13 @@ Amazon SageMaker encrypts most of the connection by default. But, there are spec
 1. How to connect Amazon SageMaker Jupyter Notebooks to your VPC and Subnet
 2. How to apply Security Groups to Amazon SageMaker Jupyter Notebooks
 3. How to disable Internet Access
-4. **(Feature Callout)**How to disable Root Access on Amazon SageMaker Jupyter Notebooks
-5. **(Reference Material Provided)**How to encrypt EBS volume attached to your Amazon SageMaker Jupyter Notebooks
+4. (Feature Callout)How to disable Root Access on Amazon SageMaker Jupyter Notebooks
+5. (Reference Material Provided)How to encrypt EBS volume attached to your Amazon SageMaker Jupyter Notebooks
 6. How to setup NAT Gateway for secure ML libraries download from the Internet
 7. How to use AWS Backbone for secure access to data sitting in Amazon S3
-8. **(Script Provided)**How to connect your Amazon SageMaker training jobs to your VPC
-9. **(Script Provided)**How to apply Security Groups to Amazon SageMaker training jobs instances
-10. **(Script Provided)**How to encrypt the connection between Amazon SageMaker Training Instances
+8. (Script Provided)How to connect your Amazon SageMaker training jobs to your VPC
+9. (Script Provided)How to apply Security Groups to Amazon SageMaker training jobs instances
+10.(Script Provided)How to encrypt the connection between Amazon SageMaker Training Instances
 
 ### Prerequisites and assumptions
 1. To complete this lab, you need a personal Laptop and an AWS account that provides access to AWS services. You should have Admin access as we will be creating new roles and policies to configure the lab environment.
